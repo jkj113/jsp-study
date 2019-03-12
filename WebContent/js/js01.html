@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- 표준  (DOC => 문서) -->
+<html>
+<!-- 모든 것은  html태그 안에 들어있어야 한다.(표준)-->
+<head>
+<!-- 타이틀, 가져 올 파일 -->
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 나머지 모든 애들은 body에 -->
+	<div id="div1">하하하!</div>
+	<input type="number" id="num1">+<input type="number" id="num2">
+	=<input type="text" id="result"><button onclick=calc()>계산</button>
+	<br>
+	<input type="text" id="userId" onkeyup="test2()">
+	<button onclick="test()">알림!</button>
+	<script>
+	    function calc(){
+	    	var num1 = document.getElementById("num1");
+	    	var num2 = document.getElementById("num2");
+	    	var result = document.getElementById("result");
+	    	result.value = parseInt(num1.value)+parseInt(num2.value);
+	    }
+	    document.onkeypress = function (e){
+	    console.log(e.keyCode);
+	    if(e.keyCode==13){
+	    	alert("엔터는 금지어입니다.");
+	    	e = null;
+	    }
+	    }
+		//script만 body에 써도 되고 밖에도 되고  보통 body태그 밑에
+		var div1 = document.getElementById("div1");
+		div1.innerHTML += "<br>나나나!";
+		//div거 innerHTML(HTML->약자)/대입할 수 있다=>변수
+		div1.innerHTML += "<br>너너너!";
+		for (var i = 1; i <= 10; i++) {
+			if (i % 2 == 0) {
+				div1.innerHTML += "<br>" + i;
+			}
+		}
+		function test(){
+			alert("날 클릭했군!");
+		}
+		var cnt = 0;
+		function test2(){
+			var userId = document.getElementById("userId");
+		//	alert(userId.value);
+			div1.innerHTML = userId.value;
+		}
+	</script>
+</body>
+</html>
