@@ -1,5 +1,6 @@
+<%@page import="test.jsp.study.common.DBCon"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="test.jsp.study.db.DBCon"%>
+<!--page import="test.jsp.study.db.DBCon"%>-->
 <%@page import="java.sql.PreparedStatement"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -65,7 +66,7 @@ while(rs.next()){
 	out.write("<td>"+rs.getInt("ci_year")+"</td>");
 	out.write("<td>"+rs.getString("ci_vendor")+"</td>");
 	out.write("<td>"+rs.getString("ci_etc")+"</td>");
-	out.write("<td><button onclick=\"foorDelte("+rs.getString("ci_num")+")\">삭제</button></td>");
+	out.write("<td><button onclick=\"carDelete("+rs.getString("ci_num")+")\">삭제</button></td>");
 	out.write("</tr>");
 }
 out.write("</table>");

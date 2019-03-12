@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    String ciNum = request.getParameter("ci_num");
+    String ciNum = request.getParameter("ciNum");
     String sql = " select ci_num, ci_name, ci_year, ci_vendor, ci_etc from car_info";
     	   sql += " where ci_num = ?";
     PreparedStatement ps = DBCon.getCon().prepareStatement(sql);
