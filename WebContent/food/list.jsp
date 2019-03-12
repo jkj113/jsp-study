@@ -21,8 +21,8 @@
 		}
 	%>
 	<form>
-		<input type="text" name="food_name"> <br> <input
-			= type="text" name="food_price"> <br>
+		<input type="text" name="food_name"> <br> 
+		<input type="text" name="food_price"> <br>
 		<button>검색</button>
 	</form>
 	<%
