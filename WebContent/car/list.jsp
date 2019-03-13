@@ -1,4 +1,4 @@
-<%@page import="test.jsp.study.common.DBCon"%>
+<%@page import="test.jsp.study.db.DBCon"%>
 <%@page import="java.sql.ResultSet"%>
 <!--page import="test.jsp.study.db.DBCon"%>-->
 <%@page import="java.sql.PreparedStatement"%>

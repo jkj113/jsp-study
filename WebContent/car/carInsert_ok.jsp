@@ -4,22 +4,25 @@
     pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("utf-8");
-String ciNum = request.getParameter("ciNum");
 String ciName = request.getParameter("ci_name");
-String ciVendor = request.getParameter("ci_vendor");
 String ciYear = request.getParameter("ci_year");
+String ciVendor = request.getParameter("ci_vendor");
 String ciEtc = request.getParameter("ci_etc");
-String sql = " delete from car_info where ci_num = ?";
+String sql = " insert into car_info(ci_num, ci_name, ci_year, ci_vendor, ci_etc)";
+sql += " values((select nvl(max(ci_num),0)+1 from car_info),?,?,?,?)";
 
 PreparedStatement ps = DBCon.getCon().prepareStatement(sql);
-ps.setString(1,ciNum);
+ps.setString(1,ciName);
+ps.setString(2,ciYear);
+ps.setString(3,ciVendor);
+ps.setString(4,ciEtc);
 int cnt = ps.executeUpdate();
-String result = "삭제를 실패하였습니다.";
+String result = "차량 등록이 실패하였씁니다.";
 if(cnt==1){
-	result = ("삭제를 성공했씁니다.");
+	result="차량 등록이 성공하였습니다.";
 }
 %>
 <script>
 alert("<%=result%>");
-location.href="/jsp-study/car/list.jsp";
+location.href="/jsp-study/car/carList.jsp";
 </script>
