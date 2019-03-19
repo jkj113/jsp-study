@@ -35,13 +35,13 @@ private UserDAO udao = new UserDAOImpl();
 		return udao.deleteUser(user);
 	}
 
-	public static void main(String[] args) {  //내가 테스트하고자 하는 것은 Service단
-		UserService us = new UserServiceImpl();
-		System.out.println(us.selectUserList(null));
-		
-		Map<String,String> user = new HashMap<String,String>();
-		user.put("ui_num", "45");
-		System.out.println(us.selectUser(user));
+//	public static void main(String[] args) {  //내가 테스트하고자 하는 것은 Service단
+//		UserService us = new UserServiceImpl();
+//		System.out.println(us.selectUserList(null));
+//		
+//		Map<String,String> user = new HashMap<String,String>();
+//		user.put("ui_num", "45");
+//		System.out.println(us.selectUser(user));
 		
 //		user.put("ui_name", "홍");
 //		user.put("ui_id", "hong");
@@ -56,9 +56,14 @@ private UserDAO udao = new UserDAOImpl();
 //		user.put("ui_etc", "뉴규");
 //		System.out.println(us.updatetUser(user));
 		
-		user.put("ui_num", "63");
-		System.out.println(us.deleteUser(user));
-		
-		System.out.println(us.selectUserList(null));
+//		user.put("ui_num", "63");
+//		System.out.println(us.deleteUser(user));
+//		
+//		System.out.println(us.selectUserList(null));
+//	}
+
+	@Override
+	public Map<String, String> login(String uiId) {
+		return udao.selectUserById(uiId);
 	}
 }

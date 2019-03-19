@@ -9,6 +9,7 @@
 <body>
 <%
 session.setMaxInactiveInterval(60);
+session.setAttribute("id","id");
 %>
 <%=session.getId()%>
 </body>

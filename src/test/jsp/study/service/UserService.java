@@ -9,4 +9,5 @@ public interface UserService {
 	    public int insertUser(Map<String, String> user);
 	    public int updatetUser(Map<String, String> user);
 	    public int deleteUser(Map<String, String> user);
+	    public Map<String, String> login(String uiId);
 }

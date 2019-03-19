@@ -106,13 +106,13 @@ public class UserDAOImpl implements UserDAO {
 		return 0;
 	}
 
-	public static void main(String[] args) {
-	 UserDAO udao = new UserDAOImpl();
-	System.out.println(udao.selectUserList(null));
-	
-	Map<String,String> user = new HashMap<>();
-	user.put("ui_num", "45");
-	System.out.println(udao.selectUser(user));
+//	public static void main(String[] args) {
+//	 UserDAO udao = new UserDAOImpl();
+//	System.out.println(udao.selectUserList(null));
+//	
+//	Map<String,String> user = new HashMap<>();
+//	user.put("ui_num", "45");
+//	System.out.println(udao.selectUser(user));
 	
 //	user.put("ui_name", "임꺽정");
 //	user.put("ui_id", "lim");
@@ -127,7 +127,33 @@ public class UserDAOImpl implements UserDAO {
 //	user.put("ui_etc", "의적");
 //	System.out.println(udao.updatetUser(user));
 	
-	user.put("ui_num", "62");
-	System.out.println(udao.deleteUser(user));
+//	user.put("ui_num", "62");
+//	System.out.println(udao.deleteUser(user));
+//	}
+
+	@Override //id가 유니크가 아니면 오류가 난다???
+	public Map<String, String> selectUserById(String uiId) {
+		String sql = " select ui_num, ui_name, ui_id, ui_age, ui_etc, ui_pwd"
+				+ " from user_info where ui_id=?";
+		try {
+			PreparedStatement ps = DBCon.getCon().prepareStatement(sql);
+			ps.setString(1, uiId);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Map<String,String> u = new HashMap<>();
+				u.put("ui_num", rs.getString("ui_num"));
+				u.put("ui_name", rs.getString("ui_name"));
+				u.put("ui_id", rs.getString("ui_id"));
+				u.put("ui_age", rs.getString("ui_age"));
+				u.put("ui_etc", rs.getString("ui_etc"));
+				u.put("ui_pwd", rs.getString("ui_pwd"));
+				return u;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+			return null;
+		}
+
 	}
-}
+

@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+out.print(session.getAttribute("id"));
+%>
+<br>
 <%=session.getId()%>
 </body>
 </html>
